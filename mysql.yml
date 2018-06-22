@@ -1,0 +1,41 @@
+- hosts: projet
+  user: admin
+  become: yes
+  vars:
+    mysql_root_password: epsi-nantes2017!
+  tasks:
+  - name: "Install MYSQL"
+    yum: 
+      pkg: mariadb-server
+  - name: "Install the Python MySQL Support Libraries"
+    yum: 
+      pkg: MySQL-python
+      state: latest
+  - name: "Start mysql server and enable it on reboot"
+    systemd: 
+      name: mariadb 
+      state: started
+      enabled: yes
+  - name: "Update mysql root password for all root accounts"
+    mysql_user:
+      name: root
+      host: "{{ item }}"
+      password: "{{ mysql_root_password }}"
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      check_implicit_admin: yes
+      priv: "*.*:ALL,GRANT"
+    with_items:
+      - "{{ ansible_hostname }}"
+      - 127.0.0.1
+      - ::1
+      - localhost
+  - name: "Copy the root credentials as .my.cnf file"
+    template: 
+      src: root.cnf.j2 
+      dest: ~/.my.cnf mode=0600
+  - name: "Create a New Test DB called AnsibleDB"
+    mysql_db: 
+      name: AnsibleDB 
+      login_user: root 
+      login_password: "{{ mysql_root_password }}"
