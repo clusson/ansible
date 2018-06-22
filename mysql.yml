@@ -1,6 +1,4 @@
 - hosts: projet
-  user: admin
-  become: yes
   vars:
     mysql_root_password: epsi-nantes2017!
   tasks:
@@ -30,10 +28,6 @@
       - 127.0.0.1
       - ::1
       - localhost
-  - name: "Copy the root credentials as .my.cnf file"
-    template: 
-      src: root.cnf.j2 
-      dest: ~/.my.cnf mode=0600
   - name: "Create a New Test DB called AnsibleDB"
     mysql_db: 
       name: AnsibleDB 
