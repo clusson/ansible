@@ -1,0 +1,32 @@
+- name: Installation des serveurs web
+  hosts: web
+  remote_user: root
+  tasks: 
+    - name: install yum-utils
+      package:
+        name: yum-utils
+        state: present
+    - name: install epel-release
+      package:
+        name: epel-release
+        state: present
+    - name: Add REMI repository
+      yum:
+        name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+        state: present
+    - name: install nginx
+      package:
+        name: nginx
+        state: present
+    - name: install git
+      package:
+        name: git
+        state: present
+    - name: Install all php
+      yum: name={{ item }}
+      with_items:
+        - php70
+        - php70-php-mysql
+    - git:
+        repo: https://github.com/haris44/ansible-php.git
+        dest: /var/nginx/ansible
