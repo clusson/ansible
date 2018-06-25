@@ -1,0 +1,79 @@
+- name: Installation des serveurs web
+  hosts: web
+  remote_user: root
+  tasks: 
+    - name: install yum-utils
+      package:
+        name: yum-utils
+        state: present
+    - name: install wget
+      package:
+        name: wget
+        state: present
+    - selinux:
+        policy: targeted
+        state: permissive
+    - name: install epel-release
+      package:
+        name: epel-release
+        state: present
+    - name: Add REMI repository
+      yum:
+        name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+        state: present
+    - name: install nginx
+      package:
+        name: nginx
+        state: present
+    - name: install git
+      package:
+        name: git
+        state: present
+    - name: Install all php
+      yum: name={{ item }}
+      with_items:
+        - php70
+        - php70-php-fpm
+        - php70-php-pecl-mysql
+    - name: copy php-fpm config file
+      copy:
+        src: conf/www.conf
+        dest: /etc/opt/remi/php70/php-fpm.d
+        owner: root
+        group: root
+    - name: Creates directory sites-available
+      file: path=/etc/nginx/sites-available state=directory
+    - name: Creates directory sites-enabled
+      file: path=/etc/nginx/sites-enabled state=directory
+    - name: copy nginx config
+      copy:
+        src: conf/nginx.conf
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        group: root
+    - name: copy ansible vhost
+      copy:
+        src: conf/ansible.hidenn.io.conf
+        dest: /etc/nginx/sites-available/ansible.hidenn.io.conf
+        owner: root
+        group: root
+    - name: Create symbolic link 
+      file:
+        src: /etc/nginx/sites-available/ansible.hidenn.io.conf
+        dest: /etc/nginx/sites-enabled/ansible.hidenn.io.conf
+        state: link
+    - name: "Start nginx and enable it on reboot"
+      systemd: 
+        name: nginx
+        state: reloaded
+        enabled: yes
+    - name: "Start php70-php-fpm and enable it on reboot"
+      systemd: 
+        name: php70-php-fpm
+        state: reloaded
+        enabled: yes
+    - git:
+        repo: https://github.com/haris44/ansible-php.git
+        dest: /var/nginx/ansible
+        force: true
+
