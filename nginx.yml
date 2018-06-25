@@ -6,6 +6,10 @@
       package:
         name: yum-utils
         state: present
+    - name: install yum-utils
+      package:
+        name: policycoreutils-python
+        state: present
     - name: install wget
       package:
         name: wget
