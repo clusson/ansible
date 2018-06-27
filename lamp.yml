@@ -1,4 +1,4 @@
-- hosts: web
+- hosts: all
   roles:
     - common
     - nginx
