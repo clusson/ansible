@@ -1,0 +1,32 @@
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+- name: install yum-utils
+  package:
+    name: yum-utils
+    state: present
+- name: install policycoreutils-python
+  package:
+    name: policycoreutils-python
+    state: present
+- name: install wget
+  package:
+    name: wget
+    state: present
+- name: install epel-release
+  package:
+    name: epel-release
+    state: present
+- name: Set selinux permissive
+  selinux:
+    policy: targeted
+    state: permissive
+- name: Add REMI repository
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+- name: install git
+  package:
+    name: git
+    state: present

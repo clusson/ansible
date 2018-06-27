@@ -1,0 +1,31 @@
+
+- name: Creates directory sites-available
+  file: 
+    path: /etc/nginx/sites-available
+    state: directory
+- name: Creates directory sites-enabled
+  file: 
+    path: /etc/nginx/sites-enabled 
+    state: directory
+- name: copy nginx config
+  copy:
+    src: ../files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+- name: copy ansible vhost
+  copy:
+    src: ../files/ansible.hidenn.io.conf
+    dest: /etc/nginx/sites-available/ansible.hidenn.io.conf
+    owner: root
+    group: root
+- name: Create symbolic link 
+  file:
+    src: /etc/nginx/sites-available/ansible.hidenn.io.conf
+    dest: /etc/nginx/sites-enabled/ansible.hidenn.io.conf
+    state: link
+- name: "Start nginx and enable it on reboot"
+  systemd: 
+    name: nginx
+    state: reloaded
+    enabled: yes

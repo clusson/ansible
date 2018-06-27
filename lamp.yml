@@ -1,0 +1,10 @@
+- hosts: web
+  roles:
+    - common
+    - nginx
+    - php
+    - mysql
+  vars: 
+    mysql_root_password: epsi-nantes2017!
+    mysql_user_name: ansible
+    mysql_user_password: ansible

@@ -1,7 +1,0 @@
----
-users:
-  - username: admin
-    use_sudo: yes
-
-  - username: ansible
-    use_sudo: yes

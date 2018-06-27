@@ -1,0 +1,7 @@
+- name: Install all php
+  yum: 
+    name: "{{ item }}"
+  with_items:
+    - php70
+    - php70-php-fpm
+    - php70-php-pecl-mysql

@@ -1,0 +1,6 @@
+- name: Nginx task
+  include: "{{ item }}.yml"
+  with_items: 
+    - install
+    - configure
+    - deploy
