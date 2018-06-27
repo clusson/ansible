@@ -1,10 +1,10 @@
-- name: Install MYSQL
-  yum: 
-    pkg: mariadb-server
-- name: Install the Python MySQL Support Libraries
-  yum: 
-    pkg: MySQL-python
-    state: latest
+- name: Install MySQL packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: 
+    - mariadb-server
+    - MySQL-python
 - name: Start mysql server and enable it on reboot
   systemd: 
     name: mariadb 

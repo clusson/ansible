@@ -1,5 +1,4 @@
-- name: PHP task
-  include: "{{ item }}.yml"
-  with_items: 
-    - install
-    - configure
+- name: Php install task
+  import_tasks: install.yml
+- name: Php configure task
+  import_tasks: configure.yml

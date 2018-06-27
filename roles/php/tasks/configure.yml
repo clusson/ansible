@@ -1,11 +1,11 @@
-- name: "Start php70-php-fpm and enable it on reboot"
-  systemd: 
-    name: php70-php-fpm
-    state: reloaded
-    enabled: yes
 - name: copy php-fpm config file
   copy:
     src: ../files/www.conf
     dest: /etc/opt/remi/php70/php-fpm.d
     owner: root
     group: root
+- name: "Start php70-php-fpm and enable it on reboot"
+  systemd: 
+    name: php70-php-fpm
+    state: reloaded
+    enabled: yes

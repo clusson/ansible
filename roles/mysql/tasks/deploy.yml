@@ -1,0 +1,11 @@
+- name: Copy script  
+  copy: 
+    src: ../files/hosts.sql
+    dest: /tmp
+- name: Deploy table
+  mysql_db:
+    name: ansible
+    state: import
+    login_user: "{{ mysql_user_name }}"
+    login_password: "{{ mysql_user_password }}"
+    target: /tmp/hosts.sql

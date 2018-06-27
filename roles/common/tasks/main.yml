@@ -1,4 +1,2 @@
-- name: Common task
-  include: "{{ item }}.yml"
-  with_items: 
-    - install
+- name: Common install task
+  include: install.yml

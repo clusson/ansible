@@ -1,5 +1,6 @@
-- name: MySQL task
-  include: "{{ item }}.yml"
-  with_items: 
-    - install
-    - configure
+- name: MySQL install task
+  import_tasks: install.yml
+- name: MySQL configure task
+  import_tasks: configure.yml
+- name: MySQL deploy task
+  import_tasks: deploy.yml

@@ -1,6 +1,6 @@
-- name: Nginx task
-  include: "{{ item }}.yml"
-  with_items: 
-    - install
-    - configure
-    - deploy
+- name: Nginx install task
+  import_tasks: install.yml
+- name: Nginx configure task
+  import_tasks: configure.yml
+- name: Nginx deploy task
+  import_tasks: deploy.yml
