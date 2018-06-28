@@ -9,3 +9,21 @@
     name: jenkins
     state: reloaded
     enabled: yes
+- name: "Configure a jenkins vhost"
+  copy:
+    src: ../files/jenkins.ansible.hidenn.io.conf
+    dest: /etc/nginx/sites-available/jenkins.ansible.hidenn.io.conf
+    owner: root
+    group: root
+- name: Create symbolic link 
+  file:
+    src: /etc/nginx/sites-available/jenkins.ansible.hidenn.io.conf
+    dest: /etc/nginx/sites-enabled/jenkins.ansible.hidenn.io.conf
+    state: link
+- name: "Test Nginx conf"
+  command: "nginx -t"
+- name: "Reloaded Nginx"
+  systemd: 
+    name: nginx
+    state: reloaded
+    enabled: yes
