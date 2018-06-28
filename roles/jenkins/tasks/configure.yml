@@ -7,7 +7,7 @@
 - name: "Start Jenkins and enable it on reboot"
   systemd: 
     name: jenkins
-    state: reloaded
+    state: started
     enabled: yes
 - name: "Configure a jenkins vhost"
   copy:
