@@ -1,0 +1,4 @@
+- name: Jenkins install task
+  import_tasks: install.yml
+- name: Jenkins configure task
+  import_tasks: configure.yml

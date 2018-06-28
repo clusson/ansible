@@ -1,0 +1,11 @@
+- name: copy jenkins config file
+  copy:
+    src: ../files/conf.xml
+    dest: /var/lib/jenkins/users/admin/config.xml
+    owner: root
+    group: root
+- name: "Start Jenkins and enable it on reboot"
+  systemd: 
+    name: jenkins
+    state: reloaded
+    enabled: yes
