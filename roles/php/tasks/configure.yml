@@ -1,6 +1,6 @@
 - name: copy php-fpm config file
   copy:
-    src: ../files/www.conf
+    src: www.conf
     dest: /etc/opt/remi/php70/php-fpm.d
     owner: root
     group: root

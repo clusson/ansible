@@ -9,13 +9,13 @@
     state: directory
 - name: copy nginx config
   copy:
-    src: ../files/nginx.conf
+    src: nginx.conf
     dest: /etc/nginx/nginx.conf
     owner: root
     group: root
 - name: copy ansible vhost
   copy:
-    src: ../files/ansible.hidenn.io.conf
+    src: ansible.hidenn.io.conf
     dest: /etc/nginx/sites-available/ansible.hidenn.io.conf
     owner: root
     group: root
@@ -31,15 +31,10 @@
     enabled: yes
 - name: Open http on firewalld
   firewalld:
-    service: http
+    service: "{{ item }}"
     permanent: true
     state: enabled
-- name: Open https on firewalld
-  firewalld:
-    service: https
-    permanent: true
-    state: enabled
-- name: "Reload firewalld"
-  systemd: 
-    name: firewalld
-    state: reloaded
+    immediate: true
+  with_items:
+    - http
+    - https
