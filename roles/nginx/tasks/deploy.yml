@@ -1,5 +1,0 @@
-- name: get ansible-php project
-  git:
-    repo: https://github.com/haris44/ansible-php.git
-    dest: /var/nginx/ansible
-    force: true

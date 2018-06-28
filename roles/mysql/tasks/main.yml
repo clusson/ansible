@@ -2,5 +2,3 @@
   import_tasks: install.yml
 - name: MySQL configure task
   import_tasks: configure.yml
-- name: MySQL deploy task
-  import_tasks: deploy.yml
