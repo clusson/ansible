@@ -12,6 +12,7 @@
     - wget
     - epel-release
     - git
+    - firewalld
 - name: Set selinux permissive
   selinux:
     policy: targeted

@@ -1,2 +1,4 @@
 - name: Common install task
   include: install.yml
+- name: Common configure task
+  include: configure.yml

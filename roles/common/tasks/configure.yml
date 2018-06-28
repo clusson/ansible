@@ -1,0 +1,13 @@
+- name: "Start firewalld and enable it on reboot"
+  systemd: 
+    name: firewalld
+    state: reloaded
+    enabled: yes
+- name: Reboot server
+  command: /sbin/shutdown -r +1
+  async: 0
+  poll: 0
+  ignore_errors: true
+- name: waiting for the server to come back
+  local_action: wait_for host=web state=started  timeout=100
+  sudo: false
