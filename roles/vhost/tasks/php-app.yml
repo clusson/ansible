@@ -1,4 +1,4 @@
-- name: Copy vhost conf
+- name: Copy vhost php-app conf
   copy:
     src: php-app.conf
     dest: /etc/nginx/sites-available/{{ vhost_name }}.conf

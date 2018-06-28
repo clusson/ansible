@@ -2,7 +2,7 @@
   import_tasks: install.yml
 - name: Vhost configure reverse task
   import_tasks: reverse.yml
-  when: vhost_type == ' Reverse Proxy'
+  when: vhost_type == 'Reverse Proxy'
 - name: Vhost configure php-app task
   import_tasks: php-app.yml
   when: vhost_type == 'Application PHP'

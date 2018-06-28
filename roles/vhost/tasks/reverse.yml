@@ -19,8 +19,7 @@
     hour: "2" 
     weekday: "1" 
     job: "/etc/init.d/nginx reload" 
-
-- name: "Copy vhost conf"
+- name: "Copy vhost reverse conf"
   copy:
     src: reverse.conf
     dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
