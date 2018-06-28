@@ -39,4 +39,8 @@ We're using Centos as distrib hosted on [Scaleway](https://www.scaleway.com/).
     * php70-php-pecl-mysql
   * Configure php-fpm
 * __VHost__
-
+  * Create .conf
+    * Set up reverse proxy vhost + ssl certificate
+    OR
+    * Set up PHP-FPM vhost
+  * Set domain vhost
