@@ -1,4 +1,5 @@
 - hosts: jenkins
   roles:
+    - common
     - java
     - jenkins
