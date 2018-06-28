@@ -1,5 +1,5 @@
 - stat:
-  path: /etc/letsencrypt/live/{{vhost_name}}/cert.pem
+    path: /etc/letsencrypt/live/{{vhost_name}}/cert.pem
   register: csr  
 - name: Create {{vhost_name}} CSR
   shell: certbot --nginx -d {{vhost_name}} -m clementlusson@gmail.com --agree-tos --non-interactive
