@@ -11,3 +11,18 @@
   cron: minute="30" hour="2" weekday="1" job="/opt/certbot/certbot-auto renew >> /var/log/le-renew.log"
 - name: Add crontab to reload server
   cron: minute="35" hour="2" weekday="1" job="/etc/init.d/nginx reload" 
+
+
+
+  
+- name: copy ansible vhost
+  copy:
+    src: php-app.conf
+    dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    owner: root
+    group: root
+- name: Create symbolic link 
+  file:
+    src: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    dest: /etc/nginx/sites-enabled/{{ vhost_name }}.conf
+    state: link
