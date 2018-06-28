@@ -1,6 +1,6 @@
 - name: copy jenkins config file
   copy:
-    src: ../files/conf.xml
+    src: conf.xml
     dest: /var/lib/jenkins/users/admin/config.xml
     owner: root
     group: root

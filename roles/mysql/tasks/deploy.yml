@@ -1,6 +1,6 @@
 - name: Copy script  
   copy: 
-    src: ../files/hosts.sql
+    src: hosts.sql
     dest: /tmp
 - name: Deploy table
   mysql_db:

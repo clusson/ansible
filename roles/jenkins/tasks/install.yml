@@ -13,15 +13,10 @@
     name: jenkins
     state: present
 
-- name: start jenkins
+- name: start & enable jenkins
   systemd:
     name: jenkins
-    state: started
-
-- name: enable jenkins
-  systemd:
-    name: jenkins
-    enabled: true
+    state: enabled
 
 - name: sleep for 30 seconds and continue with play
   wait_for: timeout=30

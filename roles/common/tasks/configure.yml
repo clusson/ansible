@@ -10,4 +10,3 @@
   ignore_errors: true
 - name: waiting for the server to come back
   local_action: wait_for host=web state=started timeout=100
-  sudo: false
