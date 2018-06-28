@@ -1,5 +1,3 @@
-- name: Vhost install task
-  import_tasks: install.yml
 - name: Vhost configure reverse task
   import_tasks: reverse.yml
   when: vhost_type == 'Reverse Proxy'

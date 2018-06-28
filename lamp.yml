@@ -2,9 +2,10 @@
   roles:
     - common
     - nginx
-    - vhost
     - php
     - mysql
+    - certbot
+    - vhost
   vars: 
     mysql_root_password: epsi-nantes2017!
     mysql_user_name: ansible

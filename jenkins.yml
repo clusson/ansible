@@ -2,6 +2,7 @@
   roles:
     - common
     - nginx
+    - cerbot
     - vhost
     - java
     - jenkins

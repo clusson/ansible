@@ -3,6 +3,8 @@
 We're using Centos as distrib hosted on [Scaleway](https://www.scaleway.com/).
 
 ## Roles : 
+* __Certbot__
+  * Install
 * __Common__
   * Update packages
   * Install
@@ -17,8 +19,11 @@ We're using Centos as distrib hosted on [Scaleway](https://www.scaleway.com/).
     * selinux
   * Reboot
 * __Java__
-  * Install
+  * Install OpenJDK 1.8
 * __Jenkins__
+  * Add repo & key
+  * Install, start & enable
+  * Set configuration
 * __MySQL__
   * Install MariaDB
   * Update root credentials
@@ -33,4 +38,5 @@ We're using Centos as distrib hosted on [Scaleway](https://www.scaleway.com/).
     * php70-php-fpm
     * php70-php-pecl-mysql
   * Configure php-fpm
+* __VHost__
 
