@@ -1,3 +1,9 @@
+- name: "Copy vhost reverse conf"
+  copy:
+    src: reverse.conf
+    dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    owner: root
+    group: root
 - stat:
     path: /etc/letsencrypt/live/{{vhost_name}}/cert.pem
   register: csr  
@@ -18,9 +24,3 @@
     hour: "2" 
     weekday: "1" 
     job: "/etc/init.d/nginx reload" 
-- name: "Copy vhost reverse conf"
-  copy:
-    src: reverse.conf
-    dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
-    owner: root
-    group: root

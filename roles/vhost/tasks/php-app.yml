@@ -4,3 +4,9 @@
     dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
     owner: root
     group: root
+- name: Creates website directories
+  file: 
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /var/nginx/{{ vhost_name}}
