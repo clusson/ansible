@@ -1,5 +1,5 @@
 - name: Create certificates
-  command: "certbot --nginx -d {{ vhost_name }} -m clementlusson@gmail.com --agree-tos"
+  command: "certbot --nginx -d {{ vhost_name }} -m clementlusson@gmail.com --agree-tos --non-interactive"
 - name: "Test Nginx conf"
   command: "nginx -t"
 - name: "Reloaded Nginx"
