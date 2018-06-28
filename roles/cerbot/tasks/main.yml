@@ -1,0 +1,5 @@
+- name: Certbot install task
+  import_tasks: install.yml
+- name: Certbot configure task
+  import_tasks: configure.yml
+

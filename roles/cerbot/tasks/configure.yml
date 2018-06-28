@@ -1,0 +1,13 @@
+- name: Create certificates
+  command: "certbot --nginx {{ hostvars['jenkins'].vhost_name }} -d www.{{ hostvars['jenkins'].vhost_name }}"
+- name: "Test Nginx conf"
+  command: "nginx -t"
+- name: "Reloaded Nginx"
+  systemd: 
+    name: nginx
+    state: reloaded
+    enabled: yes
+- name: Add crontab to renew certificates
+  cron: minute="30" hour="2" weekday="1" job="/opt/certbot/certbot-auto renew >> /var/log/le-renew.log"
+- name: Add crontab to reload server
+  cron: minute="35" hour="2" weekday="1" job="/etc/init.d/nginx reload" 
