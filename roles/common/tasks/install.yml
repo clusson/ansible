@@ -13,6 +13,8 @@
     - epel-release
     - git
     - firewalld
+    - zip
+    - unzip
 - name: Add REMI repository
   yum:
     name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
