@@ -1,2 +1,6 @@
 - name: Lets Encrypt client
-  git: dest=/opt/certbot clone=yes repo=https://github.com/certbot/certbot force=yes
+  git: 
+    dest: /opt/certbot 
+    clone: yes 
+    repo: https://github.com/certbot/certbot
+    force: yes

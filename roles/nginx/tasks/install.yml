@@ -2,3 +2,8 @@
   package:
     name: nginx
     state: present
+- name: "Start nginx and enable it on reboot"
+  systemd: 
+    name: nginx
+    state: started
+    enabled: yes

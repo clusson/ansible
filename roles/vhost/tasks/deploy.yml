@@ -1,0 +1,11 @@
+- name: copy ansible vhost
+  copy:
+    src: php-app.conf
+    dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    owner: root
+    group: root
+- name: Create symbolic link 
+  file:
+    src: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    dest: /etc/nginx/sites-enabled/{{ vhost_name }}.conf
+    state: link

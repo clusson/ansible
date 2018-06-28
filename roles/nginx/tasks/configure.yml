@@ -12,22 +12,6 @@
     dest: /etc/nginx/nginx.conf
     owner: root
     group: root
-- name: copy ansible vhost
-  copy:
-    src: ansible.hidenn.io.conf
-    dest: /etc/nginx/sites-available/ansible.hidenn.io.conf
-    owner: root
-    group: root
-- name: Create symbolic link 
-  file:
-    src: /etc/nginx/sites-available/ansible.hidenn.io.conf
-    dest: /etc/nginx/sites-enabled/ansible.hidenn.io.conf
-    state: link
-- name: "Start nginx and enable it on reboot"
-  systemd: 
-    name: nginx
-    state: reloaded
-    enabled: yes
 - name: Open http on firewalld
   firewalld:
     service: "{{ item }}"
