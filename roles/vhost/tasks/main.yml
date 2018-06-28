@@ -2,7 +2,9 @@
   import_tasks: install.yml
 - name: Vhost configure reverse task
   import_tasks: reverse.yml
-- name: Certbot configure php-app task
+  when: vhost_type == ' Reverse Proxy'
+- name: Vhost configure php-app task
   import_tasks: php-app.yml
-- name: Certbot configure global task
+  when: vhost_type == 'Application PHP'
+- name: Vhost configure global task
   import_tasks: configure.yml

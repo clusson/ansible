@@ -1,6 +1,4 @@
 - name: Lets Encrypt client
-  git: 
-    dest: /opt/certbot 
-    clone: yes 
-    repo: https://github.com/certbot/certbot
-    force: yes
+  yum: 
+    name: python2-certbot-nginx
+    state: present
