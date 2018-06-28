@@ -8,3 +8,8 @@
     src: /etc/nginx/sites-available/{{ vhost_name }}.conf
     dest: /etc/nginx/sites-enabled/{{ vhost_name }}.conf
     state: link
+- name: "Reloaded Nginx"
+  systemd: 
+    name: nginx
+    state: reloaded
+    enabled: yes

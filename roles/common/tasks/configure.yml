@@ -3,15 +3,18 @@
   selinux:
     policy: targeted
     state: permissive
-- name: "Start firewalld and enable it on reboot"
-  systemd: 
+- name: ensure that firewalld is running
+  service:     
     name: firewalld
-    state: reloaded
+    state: started
     enabled: yes
+  register: firewalld_status
 - name: Reboot server
   command: /sbin/shutdown -r +1
   async: 0
   poll: 0
   ignore_errors: true
+  when: firewalld_status.stdout.find("running") == -1
 - name: waiting for the server to come back
   local_action: wait_for host=web state=started timeout=100
+  when: firewalld_status.stdout.find("running") == -1
