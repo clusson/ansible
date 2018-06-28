@@ -2,6 +2,7 @@
   roles:
     - common
     - nginx
+    - vhost
     - php
     - mysql
   vars: 
