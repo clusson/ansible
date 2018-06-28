@@ -1,3 +1,8 @@
+
+- name: Set selinux permissive
+  selinux:
+    policy: targeted
+    state: permissive
 - name: "Start firewalld and enable it on reboot"
   systemd: 
     name: firewalld

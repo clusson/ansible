@@ -12,14 +12,16 @@
   yum:
     name: jenkins
     state: present
-
-- name: start & enable jenkins
-  systemd:
+    
+- name: "Start Jenkins and enable it on reboot"
+  systemd: 
     name: jenkins
-    state: enabled
+    state: started
+    enabled: yes
 
 - name: sleep for 30 seconds and continue with play
-  wait_for: timeout=30
+  wait_for: 
+    timeout: 30
   delegate_to: localhost
 
 - name: init password jenkin

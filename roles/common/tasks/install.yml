@@ -13,10 +13,6 @@
     - epel-release
     - git
     - firewalld
-- name: Set selinux permissive
-  selinux:
-    policy: targeted
-    state: permissive
 - name: Add REMI repository
   yum:
     name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm

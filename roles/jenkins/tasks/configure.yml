@@ -4,14 +4,9 @@
     dest: /var/lib/jenkins/users/admin/config.xml
     owner: root
     group: root
-- name: "Start Jenkins and enable it on reboot"
-  systemd: 
-    name: jenkins
-    state: started
-    enabled: yes
 - name: "Configure a jenkins vhost"
   copy:
-    src: ../files/deploy.ansible.hidenn.io.conf
+    src: deploy.ansible.hidenn.io.conf
     dest: /etc/nginx/sites-available/deploy.ansible.hidenn.io.conf
     owner: root
     group: root
