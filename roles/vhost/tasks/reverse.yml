@@ -8,6 +8,21 @@
     state: reloaded
     enabled: yes
 - name: Add crontab to renew certificates
-  cron: minute="30" hour="2" weekday="1" job="/opt/certbot/certbot-auto renew >> /var/log/le-renew.log"
+  cron: 
+    minute: "30" 
+    hour: "2" 
+    weekday: "1" 
+    job: "/opt/certbot/certbot-auto renew >> /var/log/le-renew.log"
 - name: Add crontab to reload server
-  cron: minute="35" hour="2" weekday="1" job="/etc/init.d/nginx reload" 
+  cron: 
+    minute: "35" 
+    hour: "2" 
+    weekday: "1" 
+    job: "/etc/init.d/nginx reload" 
+
+- name: "Copy vhost conf"
+  copy:
+    src: reverse.conf
+    dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    owner: root
+    group: root

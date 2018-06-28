@@ -1,7 +1,8 @@
-- name: Certbot install task
+- name: Vhost install task
   import_tasks: install.yml
-- name: Certbot configure task
+- name: Vhost configure reverse task
   import_tasks: reverse.yml
-- name: Certbot configure task
+- name: Certbot configure php-app task
   import_tasks: php-app.yml
-
+- name: Certbot configure global task
+  import_tasks: configure.yml

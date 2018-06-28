@@ -1,9 +1,8 @@
-- name: copy ansible vhost
-  copy:
-    src: php-app.conf
-    dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
-    owner: root
-    group: root
+- name: Replace domain name
+  replace:
+    path: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    regexp: "mydomain.name"
+    replace: "{{ vhost_name }}"
 - name: Create symbolic link 
   file:
     src: /etc/nginx/sites-available/{{ vhost_name }}.conf

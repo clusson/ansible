@@ -4,14 +4,3 @@
     dest: /var/lib/jenkins/users/admin/config.xml
     owner: root
     group: root
-- name: "Configure a jenkins vhost"
-  copy:
-    src: deploy.ansible.hidenn.io.conf
-    dest: /etc/nginx/sites-available/deploy.ansible.hidenn.io.conf
-    owner: root
-    group: root
-- name: Create symbolic link 
-  file:
-    src: /etc/nginx/sites-available/deploy.ansible.hidenn.io.conf
-    dest: /etc/nginx/sites-enabled/deploy.ansible.hidenn.io.conf
-    state: link
