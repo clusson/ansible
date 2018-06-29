@@ -3,8 +3,6 @@
 We're using Centos as distrib hosted on [Scaleway](https://www.scaleway.com/).
 
 ## Roles : 
-* __Certbot__
-  * Install
 * __Common__
   * Update packages
   * Install
