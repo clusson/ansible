@@ -4,7 +4,6 @@
     - nginx
     - php
     - mysql
-    - certbot
     - vhost
   vars: 
     mysql_root_password: epsi-nantes2017!

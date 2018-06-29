@@ -1,3 +1,7 @@
+- name: Lets Encrypt client
+  yum: 
+    name: python2-certbot-nginx
+    state: present
 - name: Set up certificate
   stat:
     path: /etc/letsencrypt/live/{{vhost_name}}/cert.pem

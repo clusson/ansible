@@ -4,5 +4,7 @@
 - name: Vhost configure php-app task
   import_tasks: php-app.yml
   when: vhost_type == 'Application PHP'
+- name: Vhost certbot global task
+  import_tasks: certbot.yml
 - name: Vhost configure global task
   import_tasks: configure.yml

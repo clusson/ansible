@@ -2,7 +2,6 @@
   roles:
     - common
     - nginx
-    - certbot
     - vhost
     - java
     - jenkins

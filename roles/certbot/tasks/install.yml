@@ -1,4 +1,0 @@
-- name: Lets Encrypt client
-  yum: 
-    name: python2-certbot-nginx
-    state: present
