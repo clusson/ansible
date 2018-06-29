@@ -1,0 +1,21 @@
+- name: Set up certificate
+  stat:
+    path: /etc/letsencrypt/live/{{vhost_name}}/cert.pem
+  register: csr  
+- name: Create {{vhost_name}} CSR
+  shell: certbot --nginx -d {{vhost_name}} -m clementlusson@gmail.com --agree-tos --non-interactive
+  when: csr.stat.islnk is not defined
+- name: "Test Nginx conf"
+  command: "nginx -t"
+- name: Add crontab to renew certificates
+  cron: 
+    minute: "30" 
+    hour: "2" 
+    weekday: "1" 
+    job: "/opt/certbot/certbot-auto renew >> /var/log/le-renew.log"
+- name: Add crontab to reload server
+  cron: 
+    minute: "35" 
+    hour: "2" 
+    weekday: "1" 
+    job: "/etc/init.d/nginx reload" 
