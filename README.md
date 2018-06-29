@@ -41,4 +41,5 @@ We're using Centos as distrib hosted on [Scaleway](https://www.scaleway.com/).
     * Set up reverse proxy vhost + ssl certificate
     OR
     * Set up PHP-FPM vhost
+  * Generate certificates
   * Set domain vhost
